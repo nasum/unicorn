@@ -699,6 +699,7 @@ class Unicorn::HttpServer
         # Unicorn::Worker#kgio_tryaccept is not like accept(2) at all,
         # but that will return false
         if client = sock.kgio_tryaccept
+          @logger.error '### Monkey Log ###'
           process_client(client)
           nr += 1
           worker.tick = time_now.to_i
